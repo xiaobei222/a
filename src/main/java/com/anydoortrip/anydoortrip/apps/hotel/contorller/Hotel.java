@@ -51,9 +51,7 @@ public class Hotel {
         // 定义响应内容
         ArrayList<CityRepData> list = new ArrayList<>();
         // 提取内容
-        dataList.forEach(data -> {
-            list.add(new CityRepData((JSONObject) data));
-        });
+        dataList.forEach(data -> list.add(new CityRepData((JSONObject) data)));
         return new Response<>(0, "success", list);
     }
 
