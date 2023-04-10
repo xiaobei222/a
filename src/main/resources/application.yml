@@ -9,8 +9,6 @@ spring:
     url: jdbc:mysql://185.184.223.175:3306/anydoor_trip_java?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
     hikari:
       max-lifetime: 120000
-  jpa:
-    open-in-view: false
 
 wota:
   token: TS5b5AK99D59955UfU1A427DbU7AeU727e
