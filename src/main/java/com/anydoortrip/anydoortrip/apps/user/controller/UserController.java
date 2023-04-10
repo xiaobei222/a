@@ -1,7 +1,7 @@
-package com.anydoortrip.anydoortrip.apps.User.controller;
+package com.anydoortrip.anydoortrip.apps.user.controller;
 
-import com.anydoortrip.anydoortrip.apps.User.entity.User;
-import com.anydoortrip.anydoortrip.apps.User.service.UserRepository;
+import com.anydoortrip.anydoortrip.apps.user.entity.User;
+import com.anydoortrip.anydoortrip.apps.user.service.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

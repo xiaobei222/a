@@ -1,7 +1,7 @@
 package com.anydoortrip.anydoortrip;
 
-import com.anydoortrip.anydoortrip.apps.User.entity.User;
-import com.anydoortrip.anydoortrip.apps.User.service.UserRepository;
+import com.anydoortrip.anydoortrip.apps.user.entity.User;
+import com.anydoortrip.anydoortrip.apps.user.service.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
