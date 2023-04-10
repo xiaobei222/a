@@ -1,7 +1,9 @@
 package com.anydoortrip.anydoortrip.apps.user.service;
 
+import com.anydoortrip.anydoortrip.apps.user.entity.Test;
 import com.anydoortrip.anydoortrip.apps.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
@@ -9,4 +11,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
     // 根据userid去寻找
     Optional<User> findById(Long userId);
+    Optional<User> findByMobilePhone(String mobilePhone);
 }

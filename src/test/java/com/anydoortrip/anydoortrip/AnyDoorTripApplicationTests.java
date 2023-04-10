@@ -16,7 +16,7 @@ class AnyDoorTripApplicationTests {
 
     @Test
     void contextLoads() {
-        Optional<User> user = userRepository.findById(1L);
+        Optional<User> user = userRepository.findByMobilePhone("15913200845");
         user.ifPresent(value -> System.out.println(value.getUsername()));
     }
 }
