@@ -5,7 +5,7 @@ import com.alibaba.fastjson2.JSONObject;
 /**
  * 城市信息
  */
-public class CityData {
+public class CityRepData {
     // 地点类型
     private String locationType;
     // 城市或酒店code
@@ -27,7 +27,7 @@ public class CityData {
     // 国家
     private String country;
 
-    public CityData(String locationType, String code, String name, String displayName, String fullName, String displayFullName, String address, String displayAddress, String city, String country) {
+    public CityRepData(String locationType, String code, String name, String displayName, String fullName, String displayFullName, String address, String displayAddress, String city, String country) {
         this.locationType = locationType;
         this.code = code;
         this.name = name;
@@ -40,7 +40,7 @@ public class CityData {
         this.country = country;
     }
 
-    public CityData(JSONObject data){
+    public CityRepData(JSONObject data){
         this.locationType = data.getString("locationType");
         this.code = data.getString("code");
         this.name = data.getString("name");

@@ -11,13 +11,12 @@ import java.util.Optional;
 @SpringBootTest
 class AnyDoorTripApplicationTests {
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Test
-	void contextLoads() {
-		Optional<User> user = userRepository.findById(1L);
-		user.ifPresent(value -> System.out.println(value.getUsername()));
-	}
-
+    @Test
+    void contextLoads() {
+        Optional<User> user = userRepository.findById(1L);
+        user.ifPresent(value -> System.out.println(value.getUsername()));
+    }
 }

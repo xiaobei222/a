@@ -3,13 +3,14 @@ package com.anydoortrip.anydoortrip.apps.hotel.contorller;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.anydoortrip.anydoortrip.apps.hotel.response.CityData;
+import com.anydoortrip.anydoortrip.apps.hotel.requestData.CitySearchReqData;
+import com.anydoortrip.anydoortrip.apps.hotel.requestData.GetHotelListReqData;
+import com.anydoortrip.anydoortrip.apps.hotel.response.CityRepData;
+import com.anydoortrip.anydoortrip.apps.hotel.response.HotelListRepData;
 import com.anydoortrip.anydoortrip.apps.hotel.utils.Wota;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.Valid;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +29,13 @@ public class Hotel {
     /**
      * 获取城市列表
      *
-     * @param keyword 关键字
+     * @param citySearchReqData 城市搜索数据
      * @return 城市列表
      */
     @GetMapping("/city_search")
-    public Response<List<CityData>> get_city(@NotNull(message = "关键字不可为空") String keyword) {
+    public Response<List<CityRepData>> get_city(@RequestHeader(value = "lang", defaultValue = "en") String lang, @Valid CitySearchReqData citySearchReqData) {
         // 获取到城市列表字符串
-        String cityString = wota.getCity(keyword);
+        String cityString = wota.getCity(citySearchReqData.getKeyword(), lang);
         // 将字符串转换成json对象
         JSONObject jsonObject = JSON.parseObject(cityString);
         // 如果查询失败
@@ -48,17 +49,34 @@ public class Hotel {
             return new Response<>(0, "success");
         }
         // 定义响应内容
-        ArrayList<CityData> list = new ArrayList<>();
+        ArrayList<CityRepData> list = new ArrayList<>();
         // 提取内容
         dataList.forEach(data -> {
-            list.add(new CityData((JSONObject) data));
+            list.add(new CityRepData((JSONObject) data));
         });
         return new Response<>(0, "success", list);
+    }
+
+    @PostMapping("/get_hotel_list")
+    public Response<HotelListRepData> get_hotel_list(@RequestHeader(value = "lang", defaultValue = "en") String lang, @RequestBody @Valid GetHotelListReqData getHotelListReqData) {
+        // 获取酒店列表字符串
+        String hotel_list_string = wota.getHotelList(getHotelListReqData.getCode(), getHotelListReqData.getLocationType(), getHotelListReqData.getNumber_per_page(), getHotelListReqData.getPage_number(), getHotelListReqData.getGroups(), lang);
+        // 将字符串转换成json对象
+        JSONObject jsonObject = JSON.parseObject(hotel_list_string);
+        // 如果查询失败
+        if (!jsonObject.getBoolean("success")) {
+            return new Response<>(0, "success");
+        }
+        // 获取结果对象
+        HotelListRepData hotelListRepData = new HotelListRepData(jsonObject);
+        // 返回响应内容
+        return new Response<>(0, "success", hotelListRepData);
     }
 }
 
 /**
  * 响应体
+ *
  * @param <T> 响应内容泛型
  */
 class Response<T> {
