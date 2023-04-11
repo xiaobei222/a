@@ -2,6 +2,8 @@ server:
   port: 12000
 
 spring:
+  jackson:
+    default-property-inclusion: non_null
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     username: root

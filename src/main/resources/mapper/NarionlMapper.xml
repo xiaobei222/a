@@ -16,10 +16,11 @@
             <result column="area_image" jdbcType="VARCHAR" property="areaImage" />
         </association>
     </resultMap>
-   <select id="selectCountryById" resultMap="CountryPojo">
-       SELECT nf.id, nf.create_at, nf.update_at, nf.country_id, nf.flag_image, nf.area_image, c.name FROM national_flag nf LEFT JOIN country c ON nf.country_id = c.id WHERE nf.country_id = #{id}
+   <select id="selectCountryById" resultMap="CountryPojo" >
+       SELECT nf.country_id, nf.flag_image, nf.area_image,c.name FROM national_flag nf LEFT JOIN country c ON nf.country_id = c.id WHERE nf.country_id =  #{id}
 
    </select>
+
 
     <!--查询用户信息-->
 

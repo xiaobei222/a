@@ -2,6 +2,7 @@ package com.anydoortrip.anydoortrip.apps.area.pojo;
 
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +12,6 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NationalPojo {
-
-
     private Long id;
 
 

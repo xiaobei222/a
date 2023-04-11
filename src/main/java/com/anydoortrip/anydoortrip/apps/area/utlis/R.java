@@ -2,11 +2,15 @@ package com.anydoortrip.anydoortrip.apps.area.utlis;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
-public class R {
+public class R<T> {
     private Boolean flag;
     private Object data;
     private String msg;
+
+
 
     public R(){}
 
