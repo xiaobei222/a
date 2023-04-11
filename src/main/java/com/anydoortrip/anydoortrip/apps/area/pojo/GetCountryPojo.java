@@ -5,22 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-public class GetCountryPojo  {
+public class GetCountryPojo{
 
 
     private Long id;
     private String name;
-    private CountryPojo countryPojo;
-
     private String flagImage;
     private String areaImage;
 
-
-    private NationalPojo nationalPojo;
-
+    public GetCountryPojo(CountryPojo countryPojo) {
+        id = countryPojo.getId();
+        name = countryPojo.getName();
+        flagImage = countryPojo.getNationalPojo().getFlagImage();
+        areaImage = countryPojo.getNationalPojo().getAreaImage();
+    }
 }

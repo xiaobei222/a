@@ -11,12 +11,14 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://185.184.223.175:3306/anydoor_trip?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
     hikari:
-      max-lifetime: 120000
+      max-lifetime: 7200
 
 wota:
   token: TS5b5AK99D59955UfU1A427DbU7AeU727e
 
 mybatis:
     mapper-locations: classpath:mapper/*Mapper.xml
-    type-aliases-package: com.anydoortrip.anydoortrip.apps.area.pojo
+    type-aliases-package: com.anydoortrip.anydoortrip.apps.area.pojo,com.anydoortrip.anydoortrip.apps.hotel.response
+
+
 
