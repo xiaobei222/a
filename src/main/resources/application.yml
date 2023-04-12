@@ -1,17 +1,26 @@
 server:
   port: 12000
 
+
+
 spring:
-  jackson:
-    default-property-inclusion: non_null
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    username: root
-    password: Anydoor@123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://185.184.223.175:3306/anydoor_trip?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
-    hikari:
-      max-lifetime: 7200
+    dynamic:
+      primary: anydoor
+      strict: false
+      datasource:
+        anydoor:
+          url: jdbc:mysql://185.184.223.175:3306/anydoor_trip?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&allowPublicKeyRetrieval=true
+          username: root
+          password: Anydoor@123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        user:
+          url: jdbc:mysql://185.184.223.175:3306/anydoor_trip_java?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF8&useSSL=false&allowPublicKeyRetrieval=true
+          username: root
+          password: Anydoor@123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+
+
 
 wota:
   token: TS5b5AK99D59955UfU1A427DbU7AeU727e
