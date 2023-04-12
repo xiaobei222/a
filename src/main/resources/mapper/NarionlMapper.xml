@@ -20,6 +20,14 @@
        SELECT c.id, c.name, nf.flag_image, nf.area_image FROM national_flag nf LEFT JOIN country c ON nf.country_id = c.id WHERE nf.country_id =  #{id}
 
    </select>
+    <select id="queryList" resultType="com.anydoortrip.anydoortrip.apps.area.pojo.CountryPojo"></select>
+
+
+
+    <select id="queryByIdMap" resultType="java.util.Map"></select>
+
+
+    <select id="queryCityByIdMap" resultType="java.util.Map"></select>
 
 
     <!--查询用户信息-->

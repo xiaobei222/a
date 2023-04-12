@@ -7,6 +7,7 @@ import com.anydoortrip.anydoortrip.apps.area.service.NationalService;
 
 import com.anydoortrip.anydoortrip.apps.area.utlis.ResUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,27 @@ public class CountryController {
 
         return new ResUtils<>(0,"success",getCountryPojos);
     }
+    @GetMapping()
+    public ResUtils<List<CountryPojo>> getCountry(){
+        List<CountryPojo> list = nationalService.getList();
+
+        return new ResUtils<>(0,"success",list) ;
+    }
+    @GetMapping("province/{id}")
+    @ResponseBody
+    public ResUtils<List<LinkedHashMap <Integer, Object>>> queryProvince( @PathVariable Integer id){
+        List<LinkedHashMap <Integer, Object>> maps = nationalService.queryCountry(id);
+
+        return new ResUtils<>(0,"success",maps);
+    }
+    @ResponseBody
+    @GetMapping("city/{id}")
+    public ResUtils<List<LinkedHashMap <Integer, Object>>> queryCity(@PathVariable Integer id){
+        List<LinkedHashMap<Integer, Object>> cityById = nationalService.queryCityByIdMap(id);
+
+        return new ResUtils<>(0,"success",cityById);
+    }
+
 }
 
 /**
