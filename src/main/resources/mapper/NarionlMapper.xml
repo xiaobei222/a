@@ -17,7 +17,7 @@
         </association>
     </resultMap>
    <select id="selectCountryById" resultMap="CountryPojo" >
-       SELECT c.id, c.name, nf.flag_image, nf.area_image FROM national_flag nf LEFT JOIN country c ON nf.country_id = c.id WHERE nf.country_id =  #{id}
+
 
    </select>
     <select id="queryList" resultType="com.anydoortrip.anydoortrip.apps.area.pojo.CountryPojo"></select>
