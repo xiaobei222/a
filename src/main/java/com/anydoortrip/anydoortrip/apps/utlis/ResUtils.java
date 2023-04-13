@@ -15,13 +15,14 @@ public class ResUtils<T> {
     // 响应数据
     private T data;
 
+
     public ResUtils(Integer code, String message, T data) {
         this.code = code;
         this.message = message;
         this.data = data;
     }
 
-    public ResUtils(Integer code, String message) {
+    public  ResUtils(Integer code, String message) {
         this.code = code;
         this.message = message;
         this.data = null;
