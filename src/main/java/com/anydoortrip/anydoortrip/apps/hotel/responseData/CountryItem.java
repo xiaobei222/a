@@ -1,4 +1,4 @@
-package com.anydoortrip.anydoortrip.apps.hotel.response;
+package com.anydoortrip.anydoortrip.apps.hotel.responseData;
 
 public class CountryItem {
     // 国家id

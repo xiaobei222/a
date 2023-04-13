@@ -20,17 +20,11 @@ spring:
           password: Anydoor@123456
           driver-class-name: com.mysql.cj.jdbc.Driver
 
-logging:
-  level:
-    com.study.person: debug
-
 wota:
   token: TS5b5AK99D59955UfU1A427DbU7AeU727e
 
 mybatis:
   type-aliases-package: com.anydoortrip.anydoortrip.apps.area.pojo,com.anydoortrip.anydoortrip.apps.hotel.response
   configuration:
-   call-setters-on-nulls: false
-
-
+    call-setters-on-nulls: false
 

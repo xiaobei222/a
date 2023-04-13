@@ -106,18 +106,21 @@
             <version>3.0.4</version>     <!-- 启用 -->
             <optional>true</optional>
         </dependency>
+
+        <!-- jwt -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+
+        <!-- BCrypt -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
             <version>3.0.5</version>
-            <type>pom</type>
-            <scope>import</scope>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
+
     </dependencies>
 
     <build>
