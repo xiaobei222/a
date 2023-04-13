@@ -42,6 +42,4 @@ public class User {
     private Integer level;
 
     private String phoneCountryCode;
-
-    private Test test;
 }

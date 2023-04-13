@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice
-public class Exception {
+public class Exception extends Throwable {
 
     @ExceptionHandler(AnyDoorException.class)
     @ResponseBody

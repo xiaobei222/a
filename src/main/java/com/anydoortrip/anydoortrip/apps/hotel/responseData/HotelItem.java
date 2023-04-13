@@ -1,6 +1,7 @@
-package com.anydoortrip.anydoortrip.apps.hotel.response;
+package com.anydoortrip.anydoortrip.apps.hotel.responseData;
 
 import java.util.ArrayList;
+
 
 public class HotelItem {
     // 酒店id

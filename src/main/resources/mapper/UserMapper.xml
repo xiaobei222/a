@@ -26,26 +26,6 @@
             <result column="text" jdbcType="VARCHAR" property="text" />
         </association>
     </resultMap>
-    <resultMap id="aaa" type="com.anydoortrip.anydoortrip.apps.user.pojo.User">
-    <result column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
-    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
-    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="openid" jdbcType="VARCHAR" property="openid" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="profile_photo" jdbcType="VARCHAR" property="profilePhoto" />
-    <result column="gender" jdbcType="INTEGER" property="gender" />
-    <result column="birthday" jdbcType="DATE" property="birthday" />
-    <result column="super_user" jdbcType="INTEGER" property="superUser" />
-    <result column="create_at" jdbcType="VARCHAR" property="createAt" />
-    <result column="update_at" jdbcType="VARCHAR" property="updateAt" />
-    <result column="level" jdbcType="INTEGER" property="level" />
-    </resultMap>
-    <select id="findById" resultMap="aaa">
-        SELECT * FROM users WHERE id = #{id};
-    </select>
 
     <!--查询用户信息-->
 

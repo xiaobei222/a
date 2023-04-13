@@ -30,5 +30,3 @@ mybatis:
   configuration:
    call-setters-on-nulls: false
 
-
-

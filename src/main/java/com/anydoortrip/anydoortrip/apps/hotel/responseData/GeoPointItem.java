@@ -1,4 +1,4 @@
-package com.anydoortrip.anydoortrip.apps.hotel.response;
+package com.anydoortrip.anydoortrip.apps.hotel.responseData;
 
 class GeoPointItem {
     // 纬度

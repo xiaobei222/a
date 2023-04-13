@@ -6,6 +6,8 @@ import com.alibaba.fastjson2.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
+
 public class HotelListRepData {
     // 页码数据
     private PageItem paging;
@@ -57,7 +59,7 @@ public class HotelListRepData {
             // 获取酒店所属城市信息
             JSONObject _city = item_obj.getJSONObject("city");
             // 实例化城市对象
-            CityItem cityItem = new CityItem(_city.getInteger("id"), _city.getString("name"), _city.getString("displayName"), _city.getString("fullName"), _city.getString("displayFullName"), _city.getString("code"));
+           CityItem cityItem = new CityItem(_city.getInteger("id"), _city.getString("name"), _city.getString("displayName"), _city.getString("fullName"), _city.getString("displayFullName"), _city.getString("code"));
 
             // 获取酒店所属国家信息
             JSONObject _country = item_obj.getJSONObject("country");

@@ -1,4 +1,4 @@
-package com.anydoortrip.anydoortrip.apps.hotel.response;
+package com.anydoortrip.anydoortrip.apps.hotel.responseData;
 
 public   class BrandItem {
     // 品牌id
