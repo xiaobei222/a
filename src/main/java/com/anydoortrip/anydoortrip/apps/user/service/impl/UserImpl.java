@@ -19,7 +19,7 @@ public class UserImpl implements UserService {
 
     @Override
     @DS("user")
-    public List<User> getById(Integer id) {
+    public User getById(Integer id) {
         return userMapper.findById(id);
     }
 }

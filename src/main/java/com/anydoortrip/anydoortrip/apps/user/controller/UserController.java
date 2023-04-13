@@ -1,8 +1,11 @@
 package com.anydoortrip.anydoortrip.apps.user.controller;
 
 
+import com.anydoortrip.anydoortrip.apps.user.pojo.User;
 import com.anydoortrip.anydoortrip.apps.user.requestData.MobilePwdLoginReqData;
 import com.anydoortrip.anydoortrip.apps.user.service.UserService;
+import com.anydoortrip.anydoortrip.apps.utlis.BCrypt;
+import com.anydoortrip.anydoortrip.apps.utlis.Jwt;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +30,11 @@ public class UserController {
     @PostMapping("/mobile_pwd_login")
     public void mobile_pwd_login(@RequestBody @Valid MobilePwdLoginReqData mobilePwdLoginReqData) {
         Integer a = 1;
-        System.out.println(userService.getById(a));
+        User user = userService.getById(a);
+        System.out.println(user);
+//        System.out.println(Jwt.createToken(user));
+//        BCrypt bCrypt = new BCrypt();
+//        System.out.println(bCrypt.get_password_hash("123456789"));
+//        System.out.println(13);
     }
 }
