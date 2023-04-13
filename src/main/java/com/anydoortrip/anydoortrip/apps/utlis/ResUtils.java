@@ -1,4 +1,4 @@
-package com.anydoortrip.anydoortrip.apps.area.utlis;
+package com.anydoortrip.anydoortrip.apps.utlis;
 
 import lombok.Data;
 
