@@ -1,17 +1,12 @@
 package com.anydoortrip.anydoortrip.apps.area.controller;
 
-import ch.qos.logback.classic.turbo.TurboFilter;
 import com.anydoortrip.anydoortrip.apps.area.pojo.CountryPojo;
-import com.anydoortrip.anydoortrip.apps.area.pojo.GetCountryPojo;
 import com.anydoortrip.anydoortrip.apps.area.service.NationalService;
 
-import com.anydoortrip.anydoortrip.apps.area.utlis.ResUtils;
+import com.anydoortrip.anydoortrip.apps.utlis.ResUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Writer;
 import java.util.*;
 
 @RestController
@@ -21,20 +16,36 @@ public class CountryController {
     @Autowired
     private NationalService nationalService;
 
+    /**
+     *
+     * @param id 根据国家id查询国旗
+     * @return
+     */
     @GetMapping("{id}")
     @ResponseBody
     public ResUtils<List<LinkedHashMap <Integer, Object>>> getById(@PathVariable Integer id) {
         List<LinkedHashMap<Integer, Object>> hashMaps = nationalService.NationalById(id);
 
 
-        return new ResUtils<>(0,"success",hashMaps);
+        return  new ResUtils<>(0,"success",hashMaps);
     }
+
+    /**
+     * 获取所有国家列表
+     * @return
+     */
     @GetMapping()
     public ResUtils<List<CountryPojo>> getCountry(){
         List<CountryPojo> list = nationalService.getList();
 
         return new ResUtils<>(0,"success",list) ;
     }
+
+    /**
+     *
+     * @param id 根据国家id查询省份
+     * @return
+     */
     @GetMapping("province/{id}")
     @ResponseBody
     public ResUtils<List<LinkedHashMap <Integer, Object>>> queryProvince( @PathVariable Integer id){
@@ -42,6 +53,12 @@ public class CountryController {
 
         return new ResUtils<>(0,"success",maps);
     }
+
+    /**
+     *
+     * @param id 根据城市id查询省份
+     * @return
+     */
     @ResponseBody
     @GetMapping("city/{id}")
     public ResUtils<List<LinkedHashMap <Integer, Object>>> queryCity(@PathVariable Integer id){
