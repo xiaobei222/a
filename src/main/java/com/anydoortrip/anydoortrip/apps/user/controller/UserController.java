@@ -1,37 +1,38 @@
-//package com.anydoortrip.anydoortrip.apps.user.controller;
-//
-//import com.anydoortrip.anydoortrip.apps.user.entity.User;
-//
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//import java.util.Optional;
-//
-//@RestController
-//@RequestMapping("/user")
-//public class UserController {
-//    /**
-//     * 用户模型orm接口
-//     */
-//    private final UserRepository userRepository;
-//
-//    /**
-//     * 构造函数
-//     * @param userRepository 用户模型orm接口
-//     */
-//    public UserController(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
-//
-//    /**
-//     * 获取用户信息
-//     * @param user_id 用户id
-//     * @return 用户模型
-//     */
-//    @GetMapping("/get_user")
-//    public Object get_user(long user_id) {
-//        Optional<User> user = userRepository.findById(user_id);
-//        return user.orElse(null);
-//    }
-//}
+package com.anydoortrip.anydoortrip.apps.user.controller;
+
+
+import com.anydoortrip.anydoortrip.apps.user.pojo.User;
+import com.anydoortrip.anydoortrip.apps.user.requestData.MobilePwdLoginReqData;
+import com.anydoortrip.anydoortrip.apps.user.service.UserService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    /**
+     * 手机号码密码登录
+     * @param mobilePwdLoginReqData 登录数据
+     */
+    @PostMapping("/mobile_pwd_login")
+    public void  mobile_pwd_login(@RequestBody @Valid MobilePwdLoginReqData mobilePwdLoginReqData){
+        Integer a = 7;
+        List<User> byId = userService.getById(a);
+
+
+        System.out.println(byId);
+    }
+}
