@@ -23,10 +23,11 @@ public class CountryController {
 
     @GetMapping("{id}")
     @ResponseBody
-    public ResUtils<List<GetCountryPojo>> getById(@PathVariable Integer id) {
-        List<GetCountryPojo> getCountryPojos = nationalService.NationalById(id);
+    public ResUtils<List<LinkedHashMap <Integer, Object>>> getById(@PathVariable Integer id) {
+        List<LinkedHashMap<Integer, Object>> hashMaps = nationalService.NationalById(id);
 
-        return new ResUtils<>(0,"success",getCountryPojos);
+
+        return new ResUtils<>(0,"success",hashMaps);
     }
     @GetMapping()
     public ResUtils<List<CountryPojo>> getCountry(){

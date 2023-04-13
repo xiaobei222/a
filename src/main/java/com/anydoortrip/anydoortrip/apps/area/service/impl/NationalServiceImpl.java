@@ -23,10 +23,12 @@ public class NationalServiceImpl implements NationalService {
     private NationalMapper nationalMapper;
     @Override
     @DS("anydoor")
-    public List<GetCountryPojo> NationalById(Integer id) {
-        ArrayList<GetCountryPojo> arrayList = new ArrayList<>();
-        nationalMapper.selectCountryById(id).forEach(item->arrayList.add(new GetCountryPojo(item)));
-        return arrayList;
+    public List<LinkedHashMap<Integer, Object>> NationalById(Integer id) {
+//        ArrayList<GetCountryPojo> arrayList = new ArrayList<>();
+//        nationalMapper.selectCountryById(id).forEach(item->arrayList.add(new GetCountryPojo(item)));
+//        return arrayList;
+        List<LinkedHashMap<Integer, Object>> linkedHashMaps = nationalMapper.selectCountryById(id);
+        return linkedHashMaps;
     }
 
     @Override

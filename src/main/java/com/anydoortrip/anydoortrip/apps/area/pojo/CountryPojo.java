@@ -21,8 +21,8 @@ public class CountryPojo {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Date updatedAt;
 
-
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private NationalPojo nationalPojo;
-
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private ProvincePojo province;
 }
