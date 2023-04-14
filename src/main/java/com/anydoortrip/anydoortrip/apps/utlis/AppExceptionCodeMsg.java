@@ -15,8 +15,9 @@ public enum AppExceptionCodeMsg {
     USER_CREDIT_NOT_JIE(6, "Parameter error"),
     //   权限不足
     USER_CREDIT_NOT_JING(7, "Insufficient permissions"),
-    //    """服务器错误""
-    USER_CREDIT_NOT_LU(100, "Server Error");;
+    //  没有此数据
+    USER_CREDIT_NOT_LU(8, "Insufficient permissions");
+
 
     private int code;
     private String msg;

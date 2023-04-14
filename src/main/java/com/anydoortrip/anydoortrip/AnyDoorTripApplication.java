@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
@@ -16,7 +17,7 @@ import org.springframework.context.annotation.ImportResource;
  * 使用@ImportResource注解，将其标注在一个配置类上(此处配置在启动类)
  */
 @Slf4j
-@SpringBootApplication
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 @MapperScan(value = "com.anydoortrip.anydoortrip.**.mapper")
 public class AnyDoorTripApplication {
 

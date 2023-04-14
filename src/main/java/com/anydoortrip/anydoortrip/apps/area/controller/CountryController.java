@@ -35,23 +35,14 @@ public class CountryController {
     @GetMapping("{id}")
     @ResponseBody
     public Resp<List<LinkedHashMap<Integer, Object>>> getById(@PathVariable Integer id) {
-        try {
+
+
             List<LinkedHashMap<Integer, Object>> hashMaps = nationalService.NationalById(id);
-            if (hashMaps.size() == 0) {
-                // 查询结果为空
-                System.out.println(123);
-                throw new AppException(AppExceptionCodeMsg.COUNTRY_CREDIT_NOT_ENOUTH);
+            if (hashMaps.size()==0){
+                return Resp.error(AppExceptionCodeMsg.USER_CREDIT_NOT_LU);
             }
             return Resp.success(hashMaps);
-        } catch (AppException e) {
-            // 捕获自定义异常AppException
-            log.error("查询出错", e);
-            return Resp.error(AppExceptionCodeMsg.COUNTRY_CREDIT_NOT_ENOUTH);
-        } catch (Exception e) {
-            // 捕获其他异常
-            log.error("查询出错", e);
-        return Resp.error(AppExceptionCodeMsg.USER_CREDIT_NOT_ENOUTH);
-        }
+
     }
     /**
      * 获取所有国家列表
