@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.anydoortrip.anydoortrip.apps.hotel.mapper.HotelMapper">
+
+    <resultMap id="GroupData" type="com.anydoortrip.anydoortrip.apps.hotel.responseData.GroupData">
+
+        <result column="group_id" jdbcType="INTEGER" property="groupId"/>
+        <result column="group_name" jdbcType="VARCHAR" property="groupName"/>
+        <result column="group_desc" jdbcType="VARCHAR" property="groupDesc"/>
+        <result column="create_at" jdbcType="DATE" property="createAt"/>
+        <result column="update_at" jdbcType="DATE" property="updateAt"/>
+        <association property="brandData" javaType="com.anydoortrip.anydoortrip.apps.hotel.responseData.BrandData">
+            <result column="id" jdbcType="INTEGER" property="id"/>
+            <result column="brand_id" jdbcType="VARCHAR" property="brandId"/>
+            <result column="brand_chain" jdbcType="VARCHAR" property="brandChain"/>
+            <result column="brand_name" jdbcType="VARCHAR" property="brandName"/>
+            <result column="brand_display_name" jdbcType="VARCHAR" property="brandDisplayName"/>
+            <result column="brand_logo_url" jdbcType="VARCHAR" property="brandLogoUrl"/>
+            <result column="brand_desc" jdbcType="VARCHAR" property="brandDesc"/>
+            <result column="brand_display_desc" jdbcType="VARCHAR" property="brandDisplayDesc"/>
+            <result column="group_id" jdbcType="INTEGER" property="groupId"/>
+            <result column="create_at" jdbcType="DATE" property="createAt"/>
+            <result column="update_at" jdbcType="DATE" property="updateAt"/>
+
+
+        </association>
+
+    </resultMap>
+    <!--查询品牌信息-->
+    <select id="getBrand" resultMap="GroupData">
+        SELECT hotel_group.group_id,
+               hotel_group.group_name,
+               hotel_group.group_desc,
+               hotel_brand.brand_id,
+               hotel_brand.brand_chain,
+               hotel_brand.brand_name,
+               hotel_brand.brand_display_name,
+               hotel_brand.brand_logo_url,
+               hotel_brand.brand_desc,
+               hotel_brand.brand_display_desc
+        FROM hotel_group
+                 LEFT JOIN hotel_brand ON hotel_group.group_id = hotel_brand.group_id;
+
+
+    </select>
+
+
+</mapper>
