@@ -18,7 +18,7 @@ import org.springframework.context.annotation.ImportResource;
  */
 @Slf4j
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
-@MapperScan(value = "com.anydoortrip.anydoortrip.**.mapper")
+@MapperScan(value = "com.anydoortrip.anydoortrip.apps.**.mapper")
 public class AnyDoorTripApplication {
 
 	public static void main(String[] args) {

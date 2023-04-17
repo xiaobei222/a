@@ -16,18 +16,7 @@
             <result column="area_image" jdbcType="VARCHAR" property="areaImage" />
         </association>
     </resultMap>
-   <select id="selectCountryById" resultMap="CountryPojo" >
 
-
-   </select>
-    <select id="queryList" resultType="com.anydoortrip.anydoortrip.apps.area.pojo.CountryPojo"></select>
-
-
-
-    <select id="queryByIdMap" resultType="java.util.Map"></select>
-
-
-    <select id="queryCityByIdMap" resultType="java.util.Map"></select>
 
 
     <!--查询用户信息-->

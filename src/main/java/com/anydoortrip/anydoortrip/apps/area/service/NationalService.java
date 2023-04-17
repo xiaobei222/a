@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface NationalService {
 
-    List<LinkedHashMap<Integer, Object>> NationalById(Integer id);
+    List<LinkedHashMap<Integer, Object>> NationalById();
 
     List<CountryPojo> getList();
 

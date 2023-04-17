@@ -14,8 +14,11 @@ import java.util.TreeMap;
 
 @Mapper //加载bean类
 public interface NationalMapper {
-    @Select("SELECT c.id, c.name, nf.flag_image, nf.area_image FROM national_flag nf LEFT JOIN country c ON nf.country_id = c.id WHERE nf.country_id =  #{id}")
-    List<LinkedHashMap<Integer, Object>> selectCountryById(Integer id);
+    @Select("SELECT c.id, c.name, nf.flag_image, nf.area_image \n" +
+            "FROM national_flag nf \n" +
+            "LEFT JOIN country c ON nf.country_id = c.id\n" +
+            "ORDER BY c.id;")
+    List<LinkedHashMap<Integer, Object>> selectCountryById();
 
     @Select("SELECT `id` ,`name` FROM country")
     List<CountryPojo> queryList();

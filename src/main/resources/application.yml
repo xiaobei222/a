@@ -19,12 +19,15 @@ spring:
           username: root
           password: Anydoor@123456
           driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    default-property-inclusion: non_null
 
 wota:
   token: TS5b5AK99D59955UfU1A427DbU7AeU727e
 
 mybatis:
-  type-aliases-package: com.anydoortrip.anydoortrip.apps.area.pojo,com.anydoortrip.anydoortrip.apps.hotel.response
+  type-aliases-package: com.anydoortrip.anydoortrip.apps.area.pojo,com.anydoortrip.anydoortrip.apps.hotel.responseData
   configuration:
     call-setters-on-nulls: false
+  mapper-locations: classpath:mapper/*.xml
 
