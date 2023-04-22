@@ -9,14 +9,16 @@ public enum AppExceptionCodeMsg {
     USERNAME_NOT_EXISTS(3, "request expired"),
     //    诗求过期
     USER_CREDIT_NOT_ENOUTH(4, "resource exists"),
-    //   资源存在
+    //   用户已存在
     COUNTRY_CREDIT_NOT_ENOUTH(5, "resource does not exist"),
-    //    参数错误
+    //   用户不存在
     USER_CREDIT_NOT_JIE(6, "Parameter error"),
     //   权限不足
     USER_CREDIT_NOT_JING(7, "Insufficient permissions"),
     //  没有此数据
-    USER_CREDIT_NOT_LU(8, "Insufficient permissions");
+    USER_CREDIT_NOT_LU(8, "Insufficient permissions"),
+
+    USER_CREDIT_NOT_SAVE(9, "Insufficient permissions");
 
 
     private int code;

@@ -11,17 +11,16 @@ import com.anydoortrip.anydoortrip.apps.hotel.utils.Wota;
 import com.anydoortrip.anydoortrip.apps.utlis.AppExceptionCodeMsg;
 import com.anydoortrip.anydoortrip.apps.utlis.ResUtils;
 import com.anydoortrip.anydoortrip.apps.utlis.Resp;
-import com.mysql.cj.log.Log;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
+
+import static com.anydoortrip.anydoortrip.apps.utlis.AppExceptionCodeMsg.USER_CREDIT_NOT_JING;
 
 @Validated
 @RestController
@@ -30,12 +29,14 @@ public class Hotel {
 
     private final Wota wota;
 
+
     public Hotel(Wota wota) {
         this.wota = wota;
     }
 
     @Autowired
     private HotelService hotelService;
+
     /**
      * 获取城市列表
      *
@@ -80,21 +81,37 @@ public class Hotel {
         // 返回响应内容
         return new ResUtils<>(0, "success", hotelListRepData);
     }
+
     @GetMapping("/get_chain_list")
-    public Resp<List<Map<String,Object>>> selectBrand( ){
-       try {
-           List<Map<String,Object>> brand = hotelService.getBrand();;
+    public Resp<BrandData > selectBrand() {
+        try {
+            List<BrandData> brand = hotelService.getBrand();
+            if (brand != null){
+                return Resp.success(brand);
+            }
 
-           System.out.println(brand);
-           if (brand != null){
-               return Resp.success(brand);
-           }
+        }catch (Exception e){
+            Resp.error(AppExceptionCodeMsg.USER_CREDIT_NOT_JING);
+        }
+        return null;
+    }
+    @PostMapping("/get_availability")
+    public ResUtils<List<pagingPojo>> getHotelPrice(@RequestHeader(value = "lang", defaultValue = "en") String lang, @RequestBody @Valid CondiTionPojo condiTionPojo) {
+        System.out.println(condiTionPojo);
+        // 获取酒店列表字符串
+        String hotelPrice = wota.getHotelPrice(condiTionPojo,lang);
+        // 将字符串转换成json对象
+        JSONObject jsonObject = JSON.parseObject(hotelPrice);
+        // 如果查询失败
+        if (!jsonObject.getBoolean("success")) {
+            return new ResUtils<>(0, "success");
+        }
+        // 获取结果对象
+        ArrayList<pagingPojo> objects = new ArrayList<>();
 
-       }catch (Exception e){
-           System.out.println(e);
-           return Resp.error(AppExceptionCodeMsg.USER_CREDIT_NOT_JING);
-       }
-    return null;
+        System.out.println(objects.addAll(objects));
+        // 返回响应内容
+        return new ResUtils<>(0, "success", objects);
     }
 
 }

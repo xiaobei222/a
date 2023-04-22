@@ -11,19 +11,20 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
 public class GroupData {
 
-
+      private int id;
       private int groupId;
+
       private String groupName;
       private String groupDesc;
-      @JsonInclude(JsonInclude.Include.NON_NULL)
       private int apiId;
       private Date createAt;
       private Date updateAt;
 
-      private BrandData brandData;
+      private List<BrandData> brandData;
+
 
 
 

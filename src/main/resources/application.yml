@@ -26,8 +26,10 @@ wota:
   token: TS5b5AK99D59955UfU1A427DbU7AeU727e
 
 mybatis:
-  type-aliases-package: com.anydoortrip.anydoortrip.apps.area.pojo,com.anydoortrip.anydoortrip.apps.hotel.responseData
+  type-aliases-package: com.anydoortrip.anydoortrip.apps.area.pojo,com.anydoortrip.anydoortrip.apps.hotel.responseData,com.anydoortrip.anydoortrip.apps.user.pojo.User
   configuration:
     call-setters-on-nulls: false
   mapper-locations: classpath:mapper/*.xml
+
+
 

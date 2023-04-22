@@ -3,13 +3,14 @@
 <mapper namespace="com.anydoortrip.anydoortrip.apps.hotel.mapper.HotelMapper">
 
     <resultMap id="GroupData" type="com.anydoortrip.anydoortrip.apps.hotel.responseData.GroupData">
-
+        <result column="id" javaType="INTEGER" property="id"/>
         <result column="group_id" jdbcType="INTEGER" property="groupId"/>
         <result column="group_name" jdbcType="VARCHAR" property="groupName"/>
         <result column="group_desc" jdbcType="VARCHAR" property="groupDesc"/>
+        <result column="api_id" jdbcType="INTEGER" property="apiId"/>
         <result column="create_at" jdbcType="DATE" property="createAt"/>
         <result column="update_at" jdbcType="DATE" property="updateAt"/>
-        <association property="brandData" javaType="com.anydoortrip.anydoortrip.apps.hotel.responseData.BrandData">
+        <collection property="brandData" ofType="com.anydoortrip.anydoortrip.apps.hotel.responseData.BrandData">
             <result column="id" jdbcType="INTEGER" property="id"/>
             <result column="brand_id" jdbcType="VARCHAR" property="brandId"/>
             <result column="brand_chain" jdbcType="VARCHAR" property="brandChain"/>
@@ -21,27 +22,25 @@
             <result column="group_id" jdbcType="INTEGER" property="groupId"/>
             <result column="create_at" jdbcType="DATE" property="createAt"/>
             <result column="update_at" jdbcType="DATE" property="updateAt"/>
-
-
-        </association>
+        </collection>
 
     </resultMap>
-    <!--查询品牌信息-->
+    <!--    查询品牌信息-->
     <select id="getBrand" resultMap="GroupData">
-        SELECT hotel_group.group_id,
-               hotel_group.group_name,
-               hotel_group.group_desc,
-               hotel_brand.brand_id,
-               hotel_brand.brand_chain,
-               hotel_brand.brand_name,
-               hotel_brand.brand_display_name,
-               hotel_brand.brand_logo_url,
-               hotel_brand.brand_desc,
-               hotel_brand.brand_display_desc
-        FROM hotel_group
-                 LEFT JOIN hotel_brand ON hotel_group.group_id = hotel_brand.group_id;
 
-
+        SELECT hg.id AS group_id,
+               hg.group_name,
+               hg.group_desc,
+               hb.id AS brand_id,
+               hb.brand_chain,
+               hb.brand_name,
+               hb.brand_display_name,
+               hb.brand_logo_url,
+               hb.brand_desc,
+               hb.brand_display_desc
+        FROM hotel_group hg,
+             hotel_brand hb
+        WHERE hg.id = hb.group_id;
     </select>
 
 

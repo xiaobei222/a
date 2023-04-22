@@ -1,4 +1,4 @@
-package com.anydoortrip.anydoortrip.apps.user.requestData;
+package com.anydoortrip.anydoortrip.apps.user.pojo;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

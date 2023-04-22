@@ -4,7 +4,7 @@ import com.anydoortrip.anydoortrip.apps.utlis.AppExceptionCodeMsg;
 
 public class Resp<T> {
 
-    //服务端返回的错误码
+    //服务端返回的状态码
     private int code = 0;
     //服务端返回的错误信息
     private String msg = "success";

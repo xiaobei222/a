@@ -1,30 +1,22 @@
 package com.anydoortrip.anydoortrip.apps.area.controller;
 
-import com.alibaba.fastjson2.JSON;
+
 import com.anydoortrip.anydoortrip.apps.area.pojo.CountryPojo;
 import com.anydoortrip.anydoortrip.apps.area.service.NationalService;
 
-import com.anydoortrip.anydoortrip.apps.utlis.AppException;
 import com.anydoortrip.anydoortrip.apps.utlis.AppExceptionCodeMsg;
 import com.anydoortrip.anydoortrip.apps.utlis.ResUtils;
 import com.anydoortrip.anydoortrip.apps.utlis.Resp;
-import jakarta.servlet.http.HttpServletResponse;
+
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.action.IndicesRequest;
-import org.elasticsearch.action.bulk.BulkRequest;
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.search.SearchAction;
-import org.elasticsearch.common.xcontent.XContentType;
+
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.web.HttpRequestHandler;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-
-import static com.mysql.cj.conf.PropertyKey.logger;
 
 @RestController
 @RequestMapping("/area")
@@ -58,12 +50,7 @@ public class CountryController {
     @GetMapping("/country_list")
     public ResUtils<List<CountryPojo>> getCountry() {
         List<CountryPojo> list = nationalService.getList();
-        BulkRequest bulkRequest = new BulkRequest("anydoor_trip");
-        for (CountryPojo countryPojo : list){
-            IndexRequest indexRequest =  new IndexRequest().id(countryPojo.toString()).source(JSON.toJSONString(countryPojo), XContentType.JSON);
 
-            bulkRequest.add(indexRequest);
-        }
         return new ResUtils<>(0, "success", list);
 
     }

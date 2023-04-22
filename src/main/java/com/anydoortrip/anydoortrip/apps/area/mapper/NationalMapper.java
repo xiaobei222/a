@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 @Mapper //加载bean类
+
 public interface NationalMapper {
     @Select("SELECT c.id, c.name, nf.flag_image, nf.area_image \n" +
             "FROM national_flag nf \n" +

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -33,13 +34,12 @@ public class User {
 
     private LocalDate birthday;
 
-    private Boolean superUser;
-
+    private int superUser;
     private LocalDateTime createAt;
 
     private LocalDateTime updateAt;
 
-    private Integer level;
+    private int level;
 
     private String phoneCountryCode;
 }

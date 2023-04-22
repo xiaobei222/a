@@ -1,5 +1,8 @@
 package com.anydoortrip.anydoortrip.apps.hotel.utils;
 
+
+import com.anydoortrip.anydoortrip.apps.hotel.responseData.CondiTionPojo;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
@@ -28,6 +31,8 @@ public class Wota {
      */
     private String request(String url, HttpMethod method, HttpHeaders headers, HashMap<String, Object> data, String lang) {
         // 拼接请求头
+
+
         HttpHeaders _headers = new HttpHeaders();
         _headers.add("accept", "application/json");
         _headers.add("Lang", lang);
@@ -94,7 +99,35 @@ public class Wota {
         params.put("locationType", locationType);
         params.put("paging", paging);
         // 发起请求
+
         return this.request(url, HttpMethod.POST, null, params, lang);
     }
+    public String getHotelPrice(CondiTionPojo condiTionPojo , String lang ) {
+        // 请求地址
+        String url = "https://api-adt.wotaluxe.com/v1/tp/hotel/availability/search";
+        // 参数容器
+        HashMap<String, Object> params = new HashMap<>();
+        HashMap<String, Object> paging = new HashMap<>();
+        // 添加参数
+        paging.put("pageNumber",condiTionPojo.getPageNumber());
+        paging.put("numberPerPage", condiTionPojo.getNumberPerPage());
+        params.put("code", condiTionPojo.getCode());
+        params.put("checkIn", condiTionPojo.getCheckIn());
+        params.put("checkOut", condiTionPojo.getCheckOut());
+        params.put("currency", condiTionPojo.getCurrency());
+        params.put("locationType", condiTionPojo.getLocationType());
+        params.put("groups", condiTionPojo.getGroups());
+        params.put("numberOfAdults", condiTionPojo.getNumberOfAdults());
+        params.put("numberOfRooms", condiTionPojo.getNumberOfRooms());
+        params.put("availableOnly", condiTionPojo.isAvailableOnly());
+
+
+
+        params.put("paging", paging);
+        // 发起请求
+        return this.request(url, HttpMethod.POST, null, params,lang);
+    }
+
+
 }
 
